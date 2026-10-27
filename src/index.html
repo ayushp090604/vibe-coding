@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f4ef">
+  <meta name="description" content="A practical gym exercise guide organized by muscle group, with photos, form notes, and set ranges.">
+  <title>Gym 101</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f4ef;
+      --white: #fff;
+      --ink: #18221f;
+      --muted: #68716c;
+      --line: #dfe2da;
+      --lime: #d5f56a;
+      --orange: #ff7856;
+      --blue: #a9d8f6;
+      --lavender: #d0c2f3;
+      --yellow: #f4d56e;
+      --mint: #a8dfc3;
+      --display: "Space Grotesk", "Trebuchet MS", sans-serif;
+      --body: "DM Sans", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1240px, calc(100% - 64px)); margin-inline: auto; }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      border-bottom: 1px solid var(--line);
+    }
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--ink);
+      font: 700 20px/1 var(--display);
+      text-decoration: none;
+    }
+    .wordmark-mark {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--lime);
+      font-size: 15px;
+    }
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .header-meta a { text-decoration: none; }
+    .header-meta a:hover { color: var(--ink); }
+    .exercise-total { color: var(--ink); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      align-items: center;
+      gap: 62px;
+      padding-block: 66px 76px;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      width: 23px;
+      height: 3px;
+      background: var(--orange);
+      content: "";
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 590px;
+      margin-bottom: 20px;
+      font: 700 76px/.98 var(--display);
+      letter-spacing: 0;
+    }
+    h1 span { color: #647623; }
+    .hero-copy {
+      max-width: 470px;
+      margin-bottom: 26px;
+      color: #515b56;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 18px; }
+    .primary-link {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding-inline: 20px;
+      border: 1px solid var(--ink);
+      border-radius: 4px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .18s ease, color .18s ease;
+    }
+    .primary-link:hover { background: transparent; color: var(--ink); }
+    .group-count { color: var(--muted); font-size: 12px; font-weight: 600; }
+    .hero-visual {
+      position: relative;
+      min-height: 350px;
+      overflow: hidden;
+      background: #d7d9d2;
+    }
+    .hero-visual img {
+      display: block;
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      object-position: center 43%;
+    }
+    .photo-caption {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      left: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 15px;
+      background: var(--lime);
+      color: var(--ink);
+      font: 700 11px/1 var(--display);
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .photo-caption span:last-child { font: 600 11px/1 var(--body); }
+
+    .catalog { padding-bottom: 72px; }
+    .catalog-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .catalog-heading .eyebrow { margin-bottom: 9px; }
+    .catalog-heading h2 {
+      margin: 0;
+      font: 600 30px/1.1 var(--display);
+      letter-spacing: 0;
+    }
+    .catalog-note { margin: 0 0 3px; color: var(--muted); font-size: 13px; }
+    .group-nav {
+      position: sticky;
+      z-index: 5;
+      top: 0;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+      scrollbar-width: thin;
+    }
+    .group-link {
+      display: inline-flex;
+      min-height: 39px;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 9px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      background: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: border-color .18s ease, transform .18s ease;
+    }
+    .group-link:hover { transform: translateY(-2px); border-color: var(--ink); }
+    .group-link b { color: var(--muted); font: 600 10px/1 var(--display); }
+
+    .muscle-group { padding-top: 38px; scroll-margin-top: 68px; }
+    .group-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 17px;
+    }
+    .group-heading-main { display: flex; align-items: center; gap: 13px; }
+    .group-index {
+      display: grid;
+      width: 39px;
+      height: 39px;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--group-color);
+      font: 700 12px/1 var(--display);
+    }
+    .group-heading h2 { margin: 0; font: 600 23px/1.1 var(--display); }
+    .group-heading p { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+    .movement-count { color: var(--muted); font-size: 11px; font-weight: 700; }
+    .exercise-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
+    .exercise-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--white);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .exercise-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgb(24 34 31 / 8%);
+    }
+    .exercise-photo { position: relative; height: 184px; overflow: hidden; background: #dfe2da; }
+    .exercise-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+    .exercise-card:hover .exercise-photo img { transform: scale(1.035); }
+    .exercise-number {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: grid;
+      width: 29px;
+      height: 29px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--white);
+      font: 700 10px/1 var(--display);
+    }
+    .exercise-content { padding: 17px 17px 15px; }
+    .exercise-title-row { display: flex; align-items: start; justify-content: space-between; gap: 10px; }
+    .exercise-card h3 { margin: 0; font: 600 18px/1.2 var(--display); }
+    .difficulty {
+      flex: 0 0 auto;
+      padding: 5px 7px;
+      border-radius: 2px;
+      background: #eff0eb;
+      color: #4c5650;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .exercise-description {
+      min-height: 57px;
+      margin: 10px 0 14px;
+      color: #5f6963;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .exercise-details {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 11px;
+      border-top: 1px solid #eceee8;
+      font-size: 10px;
+    }
+    .equipment { color: var(--muted); }
+    .sets { font-weight: 700; white-space: nowrap; }
+
+    .training-note {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-top: 55px;
+      padding: 23px 26px;
+      background: var(--ink);
+      color: var(--white);
+    }
+    .training-note strong { font: 600 17px/1.2 var(--display); }
+    .training-note p { max-width: 600px; margin: 0; color: #d4d9d5; font-size: 12px; line-height: 1.6; }
+    .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding-block: 21px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .footer-brand { color: var(--ink); font: 700 13px/1 var(--display); }
+
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr .9fr; gap: 30px; padding-block: 54px 60px; }
+      h1 { font-size: 60px; }
+      .hero-visual, .hero-visual img { min-height: 300px; height: 300px; }
+      .exercise-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 36px, 480px); }
+      .site-header { min-height: 64px; }
+      .header-meta { gap: 13px; font-size: 11px; }
+      .header-meta a:first-child { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 28px; padding-block: 44px 48px; }
+      h1 { max-width: 450px; margin-bottom: 14px; font-size: 54px; }
+      .hero-copy { margin-bottom: 20px; font-size: 15px; }
+      .hero-visual, .hero-visual img { min-height: 245px; height: 245px; }
+      .catalog { padding-bottom: 45px; }
+      .catalog-heading { align-items: start; flex-direction: column; gap: 8px; }
+      .catalog-heading h2 { font-size: 26px; }
+      .catalog-note { font-size: 12px; }
+      .group-nav { margin-right: -18px; padding-block: 10px; }
+      .group-link { min-height: 36px; }
+      .muscle-group { padding-top: 30px; scroll-margin-top: 58px; }
+      .group-heading h2 { font-size: 21px; }
+      .exercise-grid { grid-template-columns: 1fr; gap: 12px; }
+      .exercise-card { display: grid; grid-template-columns: 37% 1fr; }
+      .exercise-photo { height: 100%; min-height: 194px; }
+      .exercise-content { padding: 14px 13px 12px; }
+      .exercise-card h3 { font-size: 16px; }
+      .exercise-description { min-height: 0; margin: 8px 0 10px; font-size: 11px; }
+      .exercise-details { align-items: start; flex-direction: column; gap: 5px; padding-top: 8px; }
+      .difficulty { padding: 4px 5px; font-size: 8px; }
+      .training-note { align-items: start; flex-direction: column; gap: 9px; margin-top: 37px; padding: 19px; }
+      .site-footer { align-items: start; flex-direction: column; gap: 7px; }
+    }
+    @media (max-width: 370px) {
+      .wrap { width: calc(100% - 28px); }
+      h1 { font-size: 48px; }
+      .exercise-card { grid-template-columns: 34% 1fr; }
+      .exercise-content { padding-inline: 10px; }
+      .exercise-title-row { flex-direction: column; gap: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#top" aria-label="Gym 101 home"><span class="wordmark-mark">G</span> GYM 101</a>
+    <nav class="header-meta" aria-label="Main navigation">
+      <a href="#catalog">Exercise guide</a>
+      <a href="#about">Training note</a>
+      <span class="exercise-total">18 movements</span>
+    </nav>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">A field guide for the weight room</p>
+        <h1 id="page-title">GYM <span>101.</span></h1>
+        <p class="hero-copy">A clearer place to start. Find a movement by muscle group, get the form basics, and head into your next session with a plan.</p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#catalog">Explore exercises <span aria-hidden="true">&nbsp;↘</span></a>
+          <span class="group-count">6 muscle groups · 18 exercises</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="A well-equipped gym floor with strength-training machines">
+        <div class="photo-caption"><span>Find your next move</span><span>01 / 06</span></div>
+      </div>
+    </section>
+
+    <section id="catalog" class="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-heading">
+        <div>
+          <p class="eyebrow">The exercise index</p>
+          <h2 id="catalog-title">Pick a muscle group</h2>
+        </div>
+        <p class="catalog-note">Choose a focus, then find a movement that fits.</p>
+      </div>
+
+      <nav class="group-nav" aria-label="Jump to a muscle group">
+        <a class="group-link" href="#chest"><b>01</b> Chest</a>
+        <a class="group-link" href="#back"><b>02</b> Back</a>
+        <a class="group-link" href="#shoulders"><b>03</b> Shoulders</a>
+        <a class="group-link" href="#arms"><b>04</b> Arms</a>
+        <a class="group-link" href="#legs"><b>05</b> Legs</a>
+        <a class="group-link" href="#core"><b>06</b> Core</a>
+      </nav>
+
+      <section id="chest" class="muscle-group" style="--group-color: var(--orange)" aria-labelledby="chest-title">
+        <div class="group-heading">
+          <div class="group-heading-main"><span class="group-index">01</span><div><h2 id="chest-title">Chest</h2><p>Pressing and fly variations</p></div></div>
+          <span class="movement-count">03 MOVEMENTS</span>
+        </div>
+        <div class="exercise-grid">
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1534368270820-9de3d8053204?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Athlete setting up for a barbell bench press" loading="lazy"><span class="exercise-number">01</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Barbell Bench Press</h3><span class="difficulty">Intermediate</span></div><p class="exercise-description">Lower the bar to mid-chest with control, then press up while keeping your shoulder blades set.</p><div class="exercise-details"><span class="equipment">Barbell · bench</span><span class="sets">3 × 6–10 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Dumbbell strength training in a gym" loading="lazy"><span class="exercise-number">02</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Incline Dumbbell Press</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Set a bench to a gentle incline. Press both dumbbells over your upper chest without clanking them together.</p><div class="exercise-details"><span class="equipment">Dumbbells · bench</span><span class="sets">3 × 8–12 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Cable and weight equipment on a gym floor" loading="lazy"><span class="exercise-number">03</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Cable Chest Fly</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">With a soft bend in your elbows, bring the handles together in front of your chest and return slowly.</p><div class="exercise-details"><span class="equipment">Cable machine</span><span class="sets">3 × 10–15 reps</span></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="back" class="muscle-group" style="--group-color: var(--blue)" aria-labelledby="back-title">
+        <div class="group-heading">
+          <div class="group-heading-main"><span class="group-index">02</span><div><h2 id="back-title">Back</h2><p>Rows and vertical pulls</p></div></div>
+          <span class="movement-count">03 MOVEMENTS</span>
+        </div>
+        <div class="exercise-grid">
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1534368270820-9de3d8053204?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Athlete training with resistance equipment" loading="lazy"><span class="exercise-number">01</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Lat Pulldown</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Pull the bar toward your upper chest by driving your elbows down. Let your arms extend fully at the top.</p><div class="exercise-details"><span class="equipment">Cable machine</span><span class="sets">3 × 8–12 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Person performing a controlled gym workout" loading="lazy"><span class="exercise-number">02</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Seated Cable Row</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Sit tall and draw the handle toward your waist, squeezing your shoulder blades together without leaning back.</p><div class="exercise-details"><span class="equipment">Cable machine</span><span class="sets">3 × 8–12 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Athlete working through a strength exercise" loading="lazy"><span class="exercise-number">03</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>One-Arm Dumbbell Row</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Brace one hand on a bench and row the dumbbell toward your hip, keeping your back steady.</p><div class="exercise-details"><span class="equipment">Dumbbell · bench</span><span class="sets">3 × 8–12 / side</span></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="shoulders" class="muscle-group" style="--group-color: var(--lavender)" aria-labelledby="shoulders-title">
+        <div class="group-heading">
+          <div class="group-heading-main"><span class="group-index">03</span><div><h2 id="shoulders-title">Shoulders</h2><p>Presses and controlled raises</p></div></div>
+          <span class="movement-count">03 MOVEMENTS</span>
+        </div>
+        <div class="exercise-grid">
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Athlete practicing a strength and conditioning movement" loading="lazy"><span class="exercise-number">01</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Seated Shoulder Press</h3><span class="difficulty">Intermediate</span></div><p class="exercise-description">Start with weights at shoulder height. Press overhead without arching your lower back.</p><div class="exercise-details"><span class="equipment">Dumbbells · bench</span><span class="sets">3 × 6–10 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Gym weights ready for a shoulder workout" loading="lazy"><span class="exercise-number">02</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Dumbbell Lateral Raise</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Raise light dumbbells out to your sides to about shoulder height, leading with your elbows.</p><div class="exercise-details"><span class="equipment">Dumbbells</span><span class="sets">3 × 12–15 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Athlete training in a modern gym" loading="lazy"><span class="exercise-number">03</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Cable Face Pull</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Pull the rope toward eye level, separating your hands and keeping your elbows high.</p><div class="exercise-details"><span class="equipment">Cable · rope handle</span><span class="sets">3 × 12–15 reps</span></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="arms" class="muscle-group" style="--group-color: var(--yellow)" aria-labelledby="arms-title">
+        <div class="group-heading">
+          <div class="group-heading-main"><span class="group-index">04</span><div><h2 id="arms-title">Arms</h2><p>Curls and elbow extensions</p></div></div>
+          <span class="movement-count">03 MOVEMENTS</span>
+        </div>
+        <div class="exercise-grid">
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Strength-training equipment for arm exercises" loading="lazy"><span class="exercise-number">01</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Dumbbell Biceps Curl</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Curl the weights toward your shoulders while keeping your elbows close to your sides.</p><div class="exercise-details"><span class="equipment">Dumbbells</span><span class="sets">3 × 8–12 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1517963628607-235ccdd5476c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Person lifting a dumbbell during a workout" loading="lazy"><span class="exercise-number">02</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Rope Triceps Pushdown</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Keep your elbows tucked and extend your arms down, separating the rope ends at the bottom.</p><div class="exercise-details"><span class="equipment">Cable · rope handle</span><span class="sets">3 × 10–15 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Athlete doing a focused dumbbell exercise" loading="lazy"><span class="exercise-number">03</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Hammer Curl</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Hold the weights with palms facing inward and curl without swinging your torso.</p><div class="exercise-details"><span class="equipment">Dumbbells</span><span class="sets">3 × 8–12 reps</span></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="legs" class="muscle-group" style="--group-color: var(--mint)" aria-labelledby="legs-title">
+        <div class="group-heading">
+          <div class="group-heading-main"><span class="group-index">05</span><div><h2 id="legs-title">Legs</h2><p>Squats, hinges, and presses</p></div></div>
+          <span class="movement-count">03 MOVEMENTS</span>
+        </div>
+        <div class="exercise-grid">
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Athlete preparing for a lower-body strength movement" loading="lazy"><span class="exercise-number">01</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Barbell Back Squat</h3><span class="difficulty">Intermediate</span></div><p class="exercise-description">Brace your core, sit between your hips, and keep your whole foot grounded as you stand.</p><div class="exercise-details"><span class="equipment">Barbell · rack</span><span class="sets">3 × 6–10 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Gym workout focused on lower-body strength" loading="lazy"><span class="exercise-number">02</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Romanian Deadlift</h3><span class="difficulty">Intermediate</span></div><p class="exercise-description">With a slight knee bend, push your hips back and lower the weights along your legs, then stand tall.</p><div class="exercise-details"><span class="equipment">Barbell or dumbbells</span><span class="sets">3 × 8–10 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Strength-training machine in a gym" loading="lazy"><span class="exercise-number">03</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Leg Press</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Lower the platform until your knees are comfortably bent, then press through your feet without locking out.</p><div class="exercise-details"><span class="equipment">Leg press machine</span><span class="sets">3 × 10–12 reps</span></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="core" class="muscle-group" style="--group-color: var(--lime)" aria-labelledby="core-title">
+        <div class="group-heading">
+          <div class="group-heading-main"><span class="group-index">06</span><div><h2 id="core-title">Core</h2><p>Bracing and trunk control</p></div></div>
+          <span class="movement-count">03 MOVEMENTS</span>
+        </div>
+        <div class="exercise-grid">
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Athlete holding a controlled bodyweight position" loading="lazy"><span class="exercise-number">01</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Front Plank</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Keep your elbows under your shoulders and form a straight line from head to heels while bracing.</p><div class="exercise-details"><span class="equipment">Bodyweight</span><span class="sets">3 × 20–45 sec</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Person performing a floor-based core workout" loading="lazy"><span class="exercise-number">02</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Cable Crunch</h3><span class="difficulty">Beginner</span></div><p class="exercise-description">Kneel at a high cable and curl your ribs toward your hips, moving through your trunk rather than your arms.</p><div class="exercise-details"><span class="equipment">Cable · rope handle</span><span class="sets">3 × 10–15 reps</span></div></div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-photo"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Athlete training with steady body control" loading="lazy"><span class="exercise-number">03</span></div>
+            <div class="exercise-content"><div class="exercise-title-row"><h3>Hanging Knee Raise</h3><span class="difficulty">Intermediate</span></div><p class="exercise-description">Hang with control and raise your knees toward your chest without swinging, then lower slowly.</p><div class="exercise-details"><span class="equipment">Pull-up bar</span><span class="sets">3 × 8–12 reps</span></div></div>
+          </article>
+        </div>
+      </section>
+
+      <aside id="about" class="training-note">
+        <strong>Good reps come first.</strong>
+        <p>Start with a manageable weight, move with control, and stop if you feel pain. If you're new to lifting or working around an injury, ask a qualified coach for guidance.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <span class="footer-brand">GYM 101</span>
+    <span>A practical guide to moving well in the weight room.</span>
+  </footer>
+</body>
+</html>

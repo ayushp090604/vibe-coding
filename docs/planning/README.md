@@ -23,3 +23,4 @@ people skip. Don't.
 |------|---------------|--------------------------------------|
 | 2026-10-06 | Replace the presentation with the supplied clean deck, retaining the existing download path. | Keep the repository filename stable when updating slides so existing links continue to work. |
 | 2026-10-13 | Add Windows setup and a runnable calculator starter. | Include a visible first run and copyable setup commands before introducing optional skills. |
+| 2026-10-27 | Add the standalone Gym 101 exercise guide with muscle-group navigation and form notes. | Keep browser-ready features self-contained when the starter has no frontend toolchain. |

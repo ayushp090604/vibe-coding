@@ -76,6 +76,12 @@ The starter needs no API keys. Sign into your AI tool separately; leave the
 optional key fields in `.env` empty unless your own app later needs them.
 The starter does not read `.env`. Keep real keys out of Git and prompts.
 
+## Gym 101 exercise guide
+
+Open [`src/index.html`](src/index.html) in a browser to browse 18 gym exercises
+organized into six muscle groups. The guide works as a standalone page; its
+exercise photos and typefaces load from Unsplash and Google Fonts when online.
+
 ## Your first feature
 
 Open this project folder in your AI coding tool, or start its CLI from the
